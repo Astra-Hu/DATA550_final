@@ -7,4 +7,4 @@ table1 %>%
     caption = "Table 1. Prevalence of ASD traits in the sample.",
     col.names = c("ASD trait status", "Count (n)", "Percent (%)")
   ) %>%
-  kable_styling(full_width = FALSE
+  kable_styling(full_width = FALSE)
