@@ -1,14 +1,18 @@
-RMD = Adult_ASD_report.Rmd
-OUT = output/Adult_ASD_report.html
+.PHONY: report report-windows
 
-all: $(OUT)
+IMAGE = astrahu/data550-final
+REPORT = Adult_ASD_report.Rmd
 
-install:
-	Rscript -e "renv::restore(prompt = FALSE)"
+report:
+	mkdir -p report
+	docker run --rm \
+		-v "$$(pwd)/report":/home/rstudio/project/report \
+		$(IMAGE) \
+		bash -c "Rscript -e \"rmarkdown::render('$(REPORT)', output_file = 'Adult_ASD_report.html', output_dir = 'report')\""
 
-$(OUT): $(RMD)
-	mkdir -p output
-	Rscript -e "rmarkdown::render('$(RMD)', output_file = 'Adult_ASD_report.html', output_dir = 'output')"
-
-clean:
-	rm -rf output
+report-windows:
+	mkdir -p report
+	docker run --rm \
+		-v "/$$(pwd)/report":/home/rstudio/project/report \
+		$(IMAGE) \
+		bash -c "Rscript -e \"rmarkdown::render('$(REPORT)', output_file = 'Adult_ASD_report.html', output_dir = 'report')\""

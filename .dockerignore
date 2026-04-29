@@ -1,0 +1,11 @@
+.git
+.Rproj.user
+.RData
+.Rhistory
+*.Rproj
+Adult_ASD_report.html
+report
+output
+renv/library
+renv/staging
+renv/.cache
