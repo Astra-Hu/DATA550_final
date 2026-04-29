@@ -16,3 +16,6 @@ report-windows:
 		-v "/$$(pwd)/report":/home/rstudio/project/report \
 		$(IMAGE) \
 		bash -c "Rscript -e \"rmarkdown::render('$(REPORT)', output_file = 'Adult_ASD_report.html', output_dir = 'report')\""
+		
+clean:
+	rm -rf report

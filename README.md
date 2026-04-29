@@ -1,39 +1,81 @@
-# DATA550_final
-# Adult ASD Screening Analysis
+# DATA550 Final Project
 
-This project analyzes the Adult ASD Screening dataset using R Markdown.
+This repository contains the code, data, and reproducible workflow for generating the final report for the DATA550 project.
 
-## Contents
+The final report is generated from:
 
-- Descriptive statistics of ASD traits
-- Visualization of screening scores
-- Logistic regression analysis
+```text
+Adult_ASD_report.Rmd
 
-<<<<<<< HEAD
-## How to reproduce
+The compiled report will be created as:
 
-```bash
-make
-=======
-## Repository setup
+report/Adult_ASD_report.html
+Repository Structure
+.
+├── Adult_ASD_report.Rmd
+├── Dockerfile
+├── Makefile
+├── README.md
+├── code/
+├── data/
+├── output/
+├── renv/
+├── renv.lock
+└── report/
+Repository Setup
 
-This project uses `renv` to manage package dependencies.
+This project uses renv to manage R package dependencies.
 
-To synchronize the package environment, run:
+To synchronize the package environment locally, run:
 
-```bash
 make install
->>>>>>> cbf0fac (Add renv setup and update reproducibility)
-
-## DockerHub Image
+DockerHub Image
 
 The Docker image for this project is publicly available at:
 
 https://hub.docker.com/r/astrahu/data550-final
-
-## Build the Docker Image
+Build the Docker Image
 
 To build the Docker image locally, run:
 
-```bash
 docker build -t astrahu/data550-final .
+Generate the Report
+
+The report can be generated using the Docker image and the Makefile.
+
+For Mac/Linux users, run:
+
+make report
+
+For Windows Git Bash users, run:
+
+make report-windows
+
+After the command finishes, the compiled report will be available in the local report/ folder:
+
+report/Adult_ASD_report.html
+Notes for Windows Git Bash Users
+
+Windows systems using Git Bash may require an extra / at the beginning of the mounted file path when running Docker.
+
+For this reason, this repository includes a Windows-specific Makefile target:
+
+make report-windows
+Clean Generated Report
+
+To remove the generated report folder, run:
+
+rm -rf report
+
+Then regenerate the report using:
+
+make report-windows
+
+or, on Mac/Linux:
+
+make report
+Submission
+
+Submit the GitHub username and repository name in the following format:
+
+Astra-Hu/DATA550_final
